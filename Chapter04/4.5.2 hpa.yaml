@@ -14,9 +14,9 @@ spec:
   targetCPUUtilizationPercentage: 50
 
 
-# autoscaling/v2beta2
+# autoscaling/v2
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: php-apache
@@ -36,7 +36,7 @@ spec:
         averageUtilization: 50
 
 ---
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: php-apache
@@ -65,11 +65,11 @@ spec:
       metric:
         name: requests-per-second
       describedObject:
-        apiVersion: extensions/v1beta1
+        apiVersion: networking.k8s.io/v1
         kind: Ingress
         name: main-route
       target:
-        kind: Value
+        type: Value
         value: 10k
 
 
@@ -393,7 +393,7 @@ spec:
 
 # hpa
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: sample-app
