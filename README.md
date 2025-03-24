@@ -1,1 +1,314 @@
-# 《Kubernetes权威指南》第6版 上册 书中示例代码
+# 《Kubernetes权威指南》第 6 版（上）书中示例代码 - 勘误
+
+### 第5页倒数第3行
+
+`Mater`  
+应改为  
+`Master`
+
+
+### 第44页第2行
+`service "mysql" created`  
+应改为  
+`service/mysql created`
+
+
+### 第45页第11行（- name）左侧空格缩进
+`    env:`  
+`     - name`  
+应改为  
+`    env:`  
+`    - name`
+
+
+### 第46页第12行
+至此，我们的第1个Kubernetes示例便搭建完成了，在1.8.4节将验证结果。  
+应改为  
+至此，我们的第1个Kubernetes示例便搭建完成了，在1.7.4节将验证结果。
+
+
+### 第61页第2行
+`kubectl apply -f "https://docs.projectcalico.org/manifests/calico.yaml"`  
+应改为  
+`kubectl --kubeconfig=/etc/kubernetes/kubeconfig apply -f "https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml"`
+
+
+### 第74页第14-28行，缺失了3个参数--service-account-issuer、--service-account-signing-key-file和--service-account-key-file
+应该在/etc/kubernetes/apiserver文件的KUBE_API_ARGS中添加以下启动参数：  
+`--service-account-issuer=https://kubernetes.default.svc.cluster.local \`  
+`--service-account-signing-key-file=/etc/kubernetes/pki/apiserver.key \`  
+`--service-account-key-file=/etc/kubernetes/pki/apiserver.key \`
+
+
+### 第88页第4行
+`KUBELET_ARGS="--kubeconfig=/etc/kubernetes/kubeconfig`  
+应改为  
+`KUBELET_ARGS="--kubeconfig=/etc/kubernetes/kubeconfig \`
+
+
+### 第95页第5行
+`attac`  
+应改为  
+`attach`
+
+
+### 第96页倒数第6行
+`attac`  
+应改为  
+`attach`
+
+
+### 第117页表格第2行与前一行重复
+应删除第2行 `spec.volumes[].name` 整行
+
+
+### 第124页倒数第15行
+在 /etc/kubelet.d 目录下放入 static-web.yaml 文件，内容如下：  
+应改为  
+在 /etc/kubernetes/manifests 目录下放入 static-web.yaml 文件，内容如下：
+
+
+### 第131页第1行
+`logging. properties`  
+应改为  
+`logging.properties`
+
+
+### 第138页第6行
+`--from-env-file: 表示基于指定的文件或者目录创建 ConfigMap`  
+应改为  
+`--from-literal: 表示将参数中指定的 “key#=value#” 创建为 ConfigMap 的数据内容`
+
+
+### 第143页倒数第6行
+3）--from-literal: 表示基于指定的文件或者目录创建 ConfigMap  
+应改为  
+3）--from-literal: 表示将参数中指定的 “key#=value#” 创建为 ConfigMap 的数据内容
+
+
+### 第151页第10行
+则在 Pod “cm-test-pod-cm-optional” 的定  
+应改为  
+则在 Pod “cm-test-pod-cm-env-optional” 的定
+
+
+### 第159页倒数第5行
+`# kubectl logs logs kubernetes-downwardapi-volume-example`  
+应改为  
+`# kubectl logs kubernetes-downwardapi-volume-example`
+
+
+### 第160页倒数第12-14行
+`# cat /etc/podinfo/labels`  
+`cluster="test-cluster1"`  
+`rack="rack-22"`  
+应改为  
+`# cat /etc/podinfo/labels`  
+`cluster="test-cluster1"`  
+`rack="rack-22"`  
+`zone="us-east-coast"`
+
+
+### 第163页倒数第13行
+`metadata.annotation`  
+应改为  
+`metadata.annotations`
+
+
+### 第177页第7-17行
+内容在第175页已有说明，此处冗余，应删除这些内容：
+```
+每种探测机制可以设置的字段如下。
+◎ initialDelaySeconds：在容器内运行指定的命令，如果该命令运行的返回码为0，
+则说明探测成功。
+◎ tcpSocket：通过容器的IP 地址和端口号执行TCP 检查，如果能够建立TCP 连接，
+则说明探测成功。
+◎ httpGet：通过容器的IP 地址、端口号及路径调用HTTP Get 方法，如果响应的状
+态码大于或等于200 且小于400，则说明探测成功。
+◎ grpc：通过gRPC 执行一个Health Check 的远程调用，要求应用程序实现gPRC 健
+康检查协议，如果响应的status 为“SERVING”，则说明探测成功。该特性到
+Kubernetes v1.27 版本时处于Stable 阶段，需要开启GRPCContainerProbe 特性门
+控进行启用。
+```
+
+
+### 第215页第12行
+template：Pod模板，其中的配置项就是Pod的定义，作为Deployment资源的一  
+应改为  
+template：Pod模板，其中的配置项就是Pod的定义，作为DaemonSet资源的一
+
+
+### 第216页第7-8行
+如果该参数被设置为百分比，那么系统会先以向下取整的方式计算出绝对值（整数）  
+应改为：  
+如果该参数被设置为百分比，那么系统会先以向上取整的方式计算出绝对值（整数）。
+
+
+### 第216页第16-17行
+如果该参数被设置为百分比，那么系统会先以向下取整的方式计算出绝对值（整数）  
+应改为：  
+如果该参数被设置为百分比，那么系统会先以向上取整的方式计算出绝对值（整数）
+，最小值为1，默认值为 0。
+
+
+### 第232页第1行
+分比，那么系统会先以向下取整的方式计算出绝对值（整数）。  
+应改为：  
+分比，那么系统会先以向上取整的方式计算出绝对值（整数）。
+
+
+### 第233页倒数第4行
+`kubectl create -f nginx-statefulset.yaml`  
+应改为  
+`kubectl create -f nginx-statefulset-parallel.yaml`
+
+
+### 第254页倒数第7行
+custom.Kubernetesmetrics.k8s.io接口获取数据  
+应改为  
+custom.metrics.k8s.io接口获取数据
+
+
+### 第255页倒数第1行
+`apiVersion: extensions/v1beta1`  
+应改为  
+`apiVersion: networking.k8s.io/v1`
+
+
+### 第257页第18行
+`kind: Value`  
+应改为  
+`type: Value`
+
+
+### 第261页倒数第5行和倒数第3行
+◎ --horizontal-pod-autoscaler-downscale-stabilization=1m0s：执行缩容操作的等待时
+长，默认值为5min。  
+◎ --horizontal-pod-autoscaler-initial-readiness-delay=30s：等待Pod 处于Ready 状态的
+时延，默认值为30min。  
+应改为  
+◎ --horizontal-pod-autoscaler-downscale-stabilization=1m0s：执行缩容操作的等待时
+长，默认值为5m0s。  
+◎ --horizontal-pod-autoscaler-initial-readiness-delay=30s：等待Pod 处于Ready 状态的
+时延，默认值为30s。
+
+
+### 第285页倒数第13行
+`<pod-name>.<headless-service-name>.<namespace>.svc.<cluster-domain>。`  
+应改为  
+`<pod-hostname>.<headless-service-name>.<namespace>.svc.<cluster-domain>。`
+
+
+### 第293页第18行
+`# kubectl create -f create -f job-backofflimit-per-index.yaml`  
+应改为  
+`# kubectl create -f job-backofflimit-per-index.yaml`
+
+
+### 第303页第16行
+`No resource found in default namespace.`  
+应改为  
+`Error from server (NotFound): jobs.batch "job-ttl" not found`
+
+
+### 第307页第12行
+`某星期的某一天（0~6，即星期日到星期一`  
+应改为  
+`某星期的某一天（0~6，即星期日到星期六`
+
+
+### 第319页倒数第6行
+`webapp-pvsxk    IPv4          80      10.1.95.22,10.1.95.23   23m`  
+应改为  
+`webapp-pvsxk    IPv4          8080      10.1.95.22,10.1.95.23   23m`
+
+
+### 第329页第10行
+`由IP 地址第3、4 位表示的总数量28×28`  
+应改为  
+`由IP 地址第3、4 位表示的总数量2⁸×2⁸`
+
+
+### 第347页倒数第1行
+拓扑感知路由（Toplogy Aware Routing）  
+应改为  
+拓扑感知路由（Topology Aware Routing）
+
+
+### 第372页倒数第4-5行
+例如，在下面的配置中有2 个Pod 和1 个Headless Service，服务名（name）与Pod  
+子域名被设置为相同的值“mysubdomain”：  
+应改为  
+Headless Service 的定义如下，服务名（name）设置为Pod 的子域名“mysubdomain”，标签选择器的值必须和Pod中的标签一致 （app: webapp1）：
+
+
+### 第378页第11行
+用于将Kubernetes 集群外的客户端请求路由到集群中部的服务上  
+应改为  
+用于将Kubernetes 集群外的客户端请求路由到集群中部署的服务上
+
+
+### 第485页倒数第1行
+CPU总量为16−1−0.5=14.5（GB）  
+应改为  
+CPU总量为16−1−0.5=14.5
+
+
+### 第486页倒数第3行
+`# kubelet get`  
+应改为  
+`# kubectl get`
+
+
+### 第489页第15行
+来计算memory.max：  
+应改为  
+来计算memory.high：
+
+
+### 第491页倒数第15行
+`|-service.slice，system-reserved资源预留`  
+应改为  
+`|-system.slice，system-reserved资源预留`
+
+
+### 第493页倒数第1行
+（1）cpu.shares=500MB  
+应改为  
+（1）cpu.shares=500m
+
+
+### 第511页倒数第4行
+否则拒绝接受  
+应改为  
+否则被拒绝接收
+
+
+### 第600页倒数第11行
+部署完成后，检查是否存在名为“grafana”的网络策略  
+应改为  
+部署完成后，检查是否存在名为“grafana”和“prometheus-k8s”的网络策略
+
+
+### 第662页第18-21行
+`（5）对于任意一个Pod而言，该Pod中所有容器的Requests总和都必须大于或等于`  
+`6MiB，而且所有容器的Limits总和都必须小于或等于1GiB。同样，所有容器的CPU`  
+`Requests总和都必须大于或等于200m，而且所有容器的CPU Limits总和都必须小于或等`  
+`于2。`  
+应改为  
+`（5）对于任意一个Pod而言，该Pod中所有容器的Memory Requests总和必须大于或等于`  
+`6MiB，而且所有容器的Memory Limits总和必须小于或等于1GiB。同样，所有容器的CPU`  
+`Requests总和必须大于或等于200m，而且所有容器的CPU Limits总和必须小于或等`  
+`于2。`
+
+
+### 第676页第7行后补充一行：
+`◎ single-numa-node：是restricted限制的加强版，最优TopologyHint必须只有一个NUMA Node，否则被拒绝接收。`
+
+
+### 第684页第8-9行
+比如，在同一个机架、机房或地区，一般用Region表  
+示机架、机房等的拓扑区域，用Zone表示地区这样跨度更大的拓扑区域。  
+应改为  
+比如，在同一个机架、机房或地区，一般用Zone表  
+示机架、机房等的拓扑区域，用Region表示地区这样跨度更大的拓扑区域。
